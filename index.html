@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GIRLS GLAM CLUB</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(160deg, #080808, #24101f, #080808);
+    color: white;
+    text-align: center;
+}
+
+.app {
+    max-width: 430px;
+    margin: auto;
+    padding: 22px 18px 35px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 900;
+    color: #f5d77a;
+    text-shadow: 0 0 15px rgba(245,215,122,.5);
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #e9b8d7;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(245,215,122,.35);
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 10px 35px rgba(0,0,0,.4);
+    margin-bottom: 18px;
+}
+
+.avatar {
+    width: 110px;
+    height: 110px;
+    margin: auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+    background: linear-gradient(135deg,#f5d77a,#d989b8);
+    border: 4px solid #f5d77a;
+}
+
+.name {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.coins {
+    font-size: 22px;
+    color: #f5d77a;
+    margin: 8px;
+}
+
+button {
+    width: 100%;
+    border: none;
+    border-radius: 16px;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main {
+    background: linear-gradient(90deg,#f5d77a,#dca5c9);
+    color: #171017;
+}
+
+.dark {
+    background: rgba(255,255,255,.1);
+    color: white;
+    border: 1px solid rgba(245,215,122,.25);
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.back {
+    margin-bottom: 12px;
+}
+
+.shop-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,.06);
+    padding: 13px;
+    margin: 8px 0;
+    border-radius: 14px;
+}
+
+.shop-item button {
+    width: auto;
+    padding: 9px 14px;
+    margin: 0;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="logo">💎 GIRLS GLAM CLUB</div>
+    <div class="subtitle">✨ Welcome to our VIP world ✨</div>
+
+    <div id="home" class="section active">
+
+        <div class="card">
+
+            <div class="avatar" id="avatar">👸</div>
+
+            <div class="name" id="playerName">Софи</div>
+
+            <div class="coins">
+                💎 <span id="coins">0</span>
+            </div>
+
+            <button class="main" onclick="dance()">
+                💃 ТАНЦЕВАТЬ + монеты
+            </button>
+
+            <button class="dark" onclick="show('songs')">
+                🎵 УГАДАТЬ ПЕСНЮ
+            </button>
+
+            <button class="dark" onclick="show('tasks')">
+                🎁 ЗАДАНИЯ
+            </button>
+
+            <button class="dark" onclick="show('shop')">
+                🛍️ GLAM SHOP
+            </button>
+
+            <button class="dark" onclick="show('style')">
+                👗 МОЙ ОБРАЗ
+            </button>
+
+            <button class="dark" onclick="show('rating')">
+                🏆 РЕЙТИНГ
+            </button>
+
+        </div>
+
+        <div class="card">
+            <h2>🪩 VIP STUDIO</h2>
+            <p>Развивайте нашу студию вместе!</p>
+        </div>
+
+    </div>
+
+
+    <div id="songs" class="section">
+        <div class="card">
+            <button class="dark back" onclick="show('home')">← Назад</button>
+
+            <h2>🎵 Угадай песню</h2>
+            <p>Выбери правильный ответ:</p>
+
+            <button class="dark" onclick="answer(true)">🎤 Вариант 1</button>
+            <button class="dark" onclick="answer(false)">🎧 Вариант 2</button>
+            <button class="dark" onclick="answer(false)">🎶 Вариант 3</button>
+
+            <p id="songResult"></p>
+        </div>
+    </div>
+
+
+    <div id="tasks" class="section">
+        <div class="card">
+            <button class="dark back" onclick="show('home')">← Назад</button>
+
+            <h2>🎁 Ежедневное задание</h2>
+
+            <p>Зайди в игру и получи VIP-бонус!</p>
+
+            <button class="main" onclick="taskReward()">
+                💎 Получить 100 монет
+            </button>
+
+            <p id="taskResult"></p>
+        </div>
+    </div>
+
+
+    <div id="shop" class="section">
+        <div class="card">
+            <button class="dark back" onclick="show('home')">← Назад</button>
+
+            <h2>🛍️ GLAM SHOP</h2>
+
+            <h3>🍕 Еда</h3>
+
+            <div class="shop-item">
+                🍕 Пицца — 100
+                <button onclick="buy(100,'Пицца')">Купить</button>
+            </div>
+
+            <div class="shop-item">
+                🧋 Бабл-ти — 150
+                <button onclick="buy(150,'Бабл-ти')">Купить</button>
+            </div>
+
+            <div class="shop-item">
+                🍣 Суши — 250
+                <button onclick="buy(250,'Суши')">Купить</button>
+            </div>
+
+            <h3>💃 Атрибутика</h3>
+
+            <div class="shop-item">
+                🎤 Микрофон — 300
+                <button onclick="buy(300,'Микрофон')">Купить</button>
+            </div>
+
+            <div class="shop-item">
+                🎧 Наушники — 400
+                <button onclick="buy(400,'Наушники')">Купить</button>
+            </div>
+
+            <div class="shop-item">
+                🪩 Диско-шар — 700
+                <button onclick="buy(700,'Диско-шар')">Купить</button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="style" class="section">
+        <div class="card">
+            <button class="dark back" onclick="show('home')">← Назад</button>
+
+            <h2>👗 Мой образ</h2>
+
+            <p>Здесь будут все купленные вещи.</p>
+
+            <div id="inventory">
+                Пока пусто ✨
+            </div>
+        </div>
+    </div>
+
+
+    <div id="rating" class="section">
+        <div class="card">
+            <button class="dark back" onclick="show('home')">← Назад</button>
+
+            <h2>🏆 Рейтинг</h2>
+
+            <p>🥇 Софи — 💎 0</p>
+            <p>🥈 Ликусик — 💎 0</p>
+            <p>🥉 Матко — 💎 0</p>
+            <p>4️⃣ Ани — 💎 0</p>
+
+            <p>✨ Скоро здесь появится настоящий общий рейтинг!</p>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+let coins = Number(localStorage.getItem("coins")) || 0;
+
+let inventory =
+    JSON.parse(localStorage.getItem("inventory")) || [];
+
+function update() {
+    document.getElementById("coins").textContent = coins;
+}
+
+function save() {
+    localStorage.setItem("coins", coins);
+    localStorage.setItem(
+        "inventory",
+        JSON.stringify(inventory)
+    );
+}
+
+function dance() {
+
+    let reward = Math.floor(Math.random() * 51) + 25;
+
+    coins += reward;
+
+    save();
+    update();
+
+    alert("💃 Отличный танец!\n\n💎 +" + reward + " монет");
+}
+
+function answer(correct) {
+
+    if (correct) {
+
+        coins += 75;
+
+        document.getElementById("songResult").textContent =
+            "🎉 Правильно! +75 💎";
+
+    } else {
+
+        document.getElementById("songResult").textContent =
+            "😢 Неправильно! Попробуй ещё раз.";
+
+    }
+
+    save();
+    update();
+}
+
+function taskReward() {
+
+    coins += 100;
+
+    document.getElementById("taskResult").textContent =
+        "🎉 Получено +100 💎";
+
+    save();
+    update();
+}
+
+function buy(price, item) {
+
+    if (coins < price) {
+
+        alert("💔 Недостаточно монет!");
+
+        return;
+    }
+
+    coins -= price;
+
+    inventory.push(item);
+
+    save();
+    update();
+
+    document.getElementById("inventory").textContent =
+        inventory.join(" • ");
+
+    alert("✨ Куплено: " + item);
+}
+
+function show(id) {
+
+    document.querySelectorAll(".section")
+        .forEach(x => x.classList.remove("active"));
+
+    document.getElementById(id)
+        .classList.add("active");
+
+    if (id === "style") {
+
+        document.getElementById("inventory").textContent =
+            inventory.length
+            ? inventory.join(" • ")
+            : "Пока пусто ✨";
+    }
+}
+
+update();
+
+</script>
+
+</body>
+</html>
