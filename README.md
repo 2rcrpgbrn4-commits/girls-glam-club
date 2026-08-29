@@ -2,887 +2,848 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GIRLS GLAM CLUB</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>💎 Girls Glam Club</title>
 
 <style>
 *{box-sizing:border-box}
-
 body{
- margin:0;
- min-height:100vh;
- font-family:Arial,sans-serif;
- color:#fff;
- background:
- radial-gradient(circle at 20% 0%,#68265f 0,#251021 38%,#080808 80%);
+margin:0;
+font-family:Arial,sans-serif;
+color:#fff;
+background:radial-gradient(circle at top,#792c70,#241020 45%,#070707);
+min-height:100vh
 }
-
-.app{
- max-width:430px;
- margin:auto;
- padding:22px 16px 40px;
-}
-
+.app{max-width:440px;margin:auto;padding:18px 14px 40px}
 .logo{
- text-align:center;
- font-size:29px;
- font-weight:900;
- color:#f5d77a;
- text-shadow:0 0 18px #ff65d0;
+text-align:center;font-size:29px;font-weight:900;color:#f7d978;
+text-shadow:0 0 15px #ff63d2;margin-bottom:4px
 }
-
-.subtitle{
- text-align:center;
- color:#f2cce5;
- margin:7px 0 20px;
-}
-
+.subtitle{text-align:center;color:#eec9e6;margin-bottom:16px}
 .card{
- background:rgba(255,255,255,.08);
- border:1px solid rgba(245,215,122,.35);
- border-radius:25px;
- padding:20px;
- margin-bottom:16px;
- box-shadow:0 12px 35px rgba(0,0,0,.4);
+background:rgba(255,255,255,.08);
+border:1px solid rgba(247,217,120,.35);
+border-radius:24px;padding:18px;margin-bottom:14px;
+box-shadow:0 10px 35px rgba(0,0,0,.35)
 }
-
-.avatar{
- width:105px;
- height:105px;
- margin:auto;
- border-radius:50%;
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:55px;
- background:linear-gradient(135deg,#f5d77a,#d989b8);
- border:4px solid #f5d77a;
- box-shadow:0 0 30px rgba(255,105,210,.45);
-}
-
-.name{
- text-align:center;
- font-size:25px;
- font-weight:bold;
- margin:12px 0 5px;
-}
-
-.coins{
- text-align:center;
- font-size:23px;
- color:#f5d77a;
- margin-bottom:10px;
-}
-
-button{
- width:100%;
- border:0;
- border-radius:16px;
- padding:14px;
- margin-top:9px;
- font-size:16px;
- font-weight:bold;
- cursor:pointer;
-}
-
-.main{
- background:linear-gradient(90deg,#f5d77a,#dca5c9);
- color:#171017;
-}
-
-.dark{
- background:rgba(255,255,255,.1);
- color:white;
- border:1px solid rgba(245,215,122,.25);
-}
-
 .section{display:none}
 .section.active{display:block}
+button{
+width:100%;border:0;border-radius:15px;padding:13px;
+margin-top:9px;font-size:15px;font-weight:800;cursor:pointer
+}
+.gold{background:linear-gradient(90deg,#f7d978,#d996c5);color:#171017}
+.dark{background:rgba(255,255,255,.1);color:white;border:1px solid #8c5b82}
+.back{margin-bottom:8px}
+.avatar{
+width:100px;height:100px;margin:auto;border-radius:50%;
+display:flex;align-items:center;justify-content:center;font-size:52px;
+background:linear-gradient(135deg,#f7d978,#d88bbd);
+border:4px solid #f7d978;box-shadow:0 0 25px #d45cb8
+}
+.name{text-align:center;font-size:25px;font-weight:bold;margin:10px}
+.coins{text-align:center;color:#f7d978;font-size:22px}
+h2{text-align:center;color:#f7d978}
+.center{text-align:center}
+.small{font-size:13px;color:#d9bfd5}
 
 .player{
- display:flex;
- align-items:center;
- gap:12px;
- padding:12px;
- margin:8px 0;
- border-radius:17px;
- background:rgba(255,255,255,.07);
+display:flex;align-items:center;gap:10px;
+padding:11px;background:rgba(255,255,255,.06);
+border-radius:16px;margin:8px 0
 }
-
-.player-avatar{
- width:52px;
- height:52px;
- border-radius:50%;
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:27px;
- background:linear-gradient(135deg,#f5d77a,#d989b8);
+.pavatar{
+width:50px;height:50px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+font-size:27px;background:linear-gradient(135deg,#f7d978,#d88bbd)
 }
+.pinfo{flex:1}
+.pname{font-weight:bold}
+.pcoins{color:#f7d978;font-size:13px}
+.player button{width:auto;margin:0;padding:8px 12px}
 
-.player-info{
- flex:1;
- text-align:left;
+/* RUNNER */
+canvas{
+display:block;width:100%;height:auto;border-radius:20px;
+background:#111;border:2px solid #f7d978
 }
-
-.player-name{font-weight:bold}
-
-.player-coins{
- color:#f5d77a;
- font-size:14px;
+.gamehud{
+display:flex;justify-content:space-between;
+font-weight:bold;color:#f7d978;margin:8px 2px
 }
-
-.player button{
- width:auto;
- margin:0;
- padding:8px 12px;
- font-size:13px;
+.controls{
+display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:9px
 }
-
-/* DANCE BATTLE */
-
-.battle-title{
- text-align:center;
- color:#ff7bdc;
- text-shadow:0 0 15px #ff4dcc;
+.controls button{
+height:54px;margin:0;font-size:23px;
+background:rgba(255,255,255,.1);color:white;border:1px solid #ff72d7
 }
+.controls .empty{visibility:hidden}
 
-.timer{
- text-align:center;
- font-size:30px;
- font-weight:bold;
- color:#f5d77a;
- margin:12px;
+/* QUIZ */
+.answers{
+display:grid;grid-template-columns:1fr 1fr;gap:9px
 }
-
-.combo{
- display:flex;
- justify-content:center;
- gap:8px;
- flex-wrap:wrap;
- margin:18px 0;
- min-height:60px;
+.answers button{margin:0;min-height:58px}
+.question{
+font-size:19px;text-align:center;
+padding:15px;background:rgba(255,255,255,.06);
+border-radius:17px;margin:12px 0
 }
+.timer{text-align:center;font-size:27px;color:#f7d978;font-weight:bold}
+.result{text-align:center;color:#f7d978;font-weight:bold;min-height:25px}
 
-.combo span{
- width:52px;
- height:52px;
- display:flex;
- align-items:center;
- justify-content:center;
- border-radius:15px;
- background:rgba(255,255,255,.08);
- border:1px solid #ff72d8;
- font-size:27px;
- box-shadow:0 0 14px rgba(255,80,210,.35);
+/* SHOP */
+.item{
+display:flex;justify-content:space-between;align-items:center;
+padding:12px;background:rgba(255,255,255,.06);
+border-radius:14px;margin:7px 0
 }
-
-.combo span.done{
- background:rgba(80,255,170,.2);
- border-color:#6affb0;
- opacity:.65;
-}
-
-.neon-grid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:12px;
- margin-top:20px;
-}
-
-.neon{
- height:75px;
- font-size:32px;
- color:#fff;
- background:rgba(255,255,255,.06);
- border:2px solid #ff70dc;
- box-shadow:0 0 16px rgba(255,70,210,.35);
- transition:.12s;
-}
-
-.neon:active{
- transform:scale(.93);
- box-shadow:0 0 30px #ff70dc;
-}
-
-.level{
- text-align:center;
- color:#f5d77a;
- font-weight:bold;
-}
-
-.result{
- text-align:center;
- color:#f5d77a;
- font-weight:bold;
- font-size:18px;
- margin-top:15px;
-}
-
-.shop-item{
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:8px;
- padding:12px;
- margin:8px 0;
- border-radius:15px;
- background:rgba(255,255,255,.06);
-}
-
-.shop-item button{
- width:auto;
- padding:8px 12px;
- margin:0;
- font-size:13px;
+.item button{width:auto;margin:0;padding:8px 12px}
+.badge{
+display:inline-block;padding:7px 12px;border-radius:20px;
+background:rgba(255,255,255,.08);margin:4px
 }
 </style>
 </head>
 
 <body>
-
 <div class="app">
 
 <div class="logo">💎 GIRLS GLAM CLUB</div>
-<div class="subtitle">✨ Rich • Glamour • Dance ✨</div>
-
+<div class="subtitle">✨ Glam • Games • Girls ✨</div>
 
 <!-- HOME -->
-
 <div id="home" class="section active">
-
 <div class="card">
-
 <div class="avatar" id="avatar">👑</div>
-
 <div class="name" id="playerName">Софа</div>
+<div class="coins">💎 <span id="coins">0</span></div>
 
-<div class="coins">
-💎 <span id="coins">0</span>
+<button class="gold" onclick="startDance()">🪩 DANCE BATTLE</button>
+<button class="gold" onclick="startRun()">🏃‍♀️ ДОБЕГИ ДО ПАРНЯ</button>
+<button class="gold" onclick="openQuiz()">🎵 ОТГАДАЙ ПЕСНЮ</button>
+<button class="gold" onclick="openChallenge()">💄 GLAM CHALLENGE</button>
+
+<button class="dark" onclick="show('shop')">🛍️ GLAM SHOP</button>
+<button class="dark" onclick="show('style')">👗 МОЙ ОБРАЗ</button>
+<button class="dark" onclick="show('rating')">🏆 РЕЙТИНГ</button>
+<button class="dark" onclick="show('players')">👭 СМЕНИТЬ ДЕВОЧКУ</button>
 </div>
-
-<button class="main" onclick="startBattle()">
-🪩 DANCE BATTLE
-</button>
-
-<button class="dark" onclick="show('tasks')">
-🎁 ЗАДАНИЯ
-</button>
-
-<button class="dark" onclick="show('shop')">
-🛍️ GLAM SHOP
-</button>
-
-<button class="dark" onclick="show('style')">
-👗 МОЙ ОБРАЗ
-</button>
-
-<button class="dark" onclick="show('rating')">
-🏆 РЕЙТИНГ
-</button>
-
 </div>
-
-<div class="card">
-
-<h2>👭 GIRLS CLUB</h2>
-
-<p>
-Софа, Лика, Маико и Ани —
-четыре подруги в мире гламура!
-</p>
-
-<button class="dark" onclick="show('players')">
-👭 ВЫБРАТЬ ИГРОКА
-</button>
-
-</div>
-
-</div>
-
 
 <!-- PLAYERS -->
-
 <div id="players" class="section">
-
 <div class="card">
-
-<button class="dark" onclick="show('home')">← Назад</button>
-
-<h2>👭 КТО ИГРАЕТ?</h2>
+<button class="dark back" onclick="show('home')">← Назад</button>
+<h2>👭 ВЫБЕРИ ДЕВОЧКУ</h2>
 
 <div class="player">
-<div class="player-avatar">👑</div>
-<div class="player-info">
-<div class="player-name">Софа</div>
-<div class="player-coins" id="sofaCoins">💎 0</div>
-</div>
-<button class="main" onclick="selectPlayer('sofa')">Играть</button>
+<div class="pavatar">👑</div><div class="pinfo">
+<div class="pname">Софа</div><div class="pcoins" id="c0">💎 0</div>
+</div><button class="gold" onclick="choose('sofa')">Играть</button>
 </div>
 
 <div class="player">
-<div class="player-avatar">🎀</div>
-<div class="player-info">
-<div class="player-name">Лика</div>
-<div class="player-coins" id="likaCoins">💎 0</div>
-</div>
-<button class="main" onclick="selectPlayer('lika')">Играть</button>
+<div class="pavatar">🎀</div><div class="pinfo">
+<div class="pname">Лика</div><div class="pcoins" id="c1">💎 0</div>
+</div><button class="gold" onclick="choose('lika')">Играть</button>
 </div>
 
 <div class="player">
-<div class="player-avatar">🔥</div>
-<div class="player-info">
-<div class="player-name">Маико</div>
-<div class="player-coins" id="maikoCoins">💎 0</div>
-</div>
-<button class="main" onclick="selectPlayer('maiko')">Играть</button>
+<div class="pavatar">🔥</div><div class="pinfo">
+<div class="pname">Маико</div><div class="pcoins" id="c2">💎 0</div>
+</div><button class="gold" onclick="choose('maiko')">Играть</button>
 </div>
 
 <div class="player">
-<div class="player-avatar">🦋</div>
-<div class="player-info">
-<div class="player-name">Ани</div>
-<div class="player-coins" id="aniCoins">💎 0</div>
+<div class="pavatar">🦋</div><div class="pinfo">
+<div class="pname">Ани</div><div class="pcoins" id="c3">💎 0</div>
+</div><button class="gold" onclick="choose('ani')">Играть</button>
 </div>
-<button class="main" onclick="selectPlayer('ani')">Играть</button>
-</div>
-
 </div>
 </div>
 
-
-<!-- DANCE BATTLE -->
-
-<div id="battle" class="section">
-
+<!-- DANCE -->
+<div id="dance" class="section">
 <div class="card">
-
-<button class="dark" onclick="leaveBattle()">← Выйти</button>
-
-<h2 class="battle-title">🪩 DANCE BATTLE</h2>
-
-<div class="level" id="levelText">
-LEVEL 1 • EASY
+<button class="dark back" onclick="stopGame()">← Выйти</button>
+<h2>🪩 DANCE BATTLE</h2>
+<div class="gamehud">
+<span>⏱️ <span id="danceTime">5</span></span>
+<span>💎 <span id="danceCoins">0</span></span>
+</div>
+<canvas id="danceCanvas" width="800" height="430"></canvas>
+<p class="center small">Собирай 💎 и избегай препятствий!</p>
+<div class="controls">
+<button class="empty"> </button>
+<button onclick="movePlayer(0,-1)">⬆️</button>
+<button class="empty"> </button>
+<button onclick="movePlayer(-1,0)">⬅️</button>
+<button onclick="movePlayer(0,1)">⬇️</button>
+<button onclick="movePlayer(1,0)">➡️</button>
+</div>
+<div class="result" id="danceResult"></div>
+</div>
 </div>
 
-<p style="text-align:center">
-Запомни комбинацию и повтори её!
-</p>
-
-<div class="timer" id="timer">10</div>
-
-<div class="combo" id="combo"></div>
-
-<div class="neon-grid">
-
-<button class="neon" onclick="press('⬆️')">⬆️</button>
-<button class="neon" onclick="press('➡️')">➡️</button>
-<button class="neon" onclick="press('⬇️')">⬇️</button>
-<button class="neon" onclick="press('⬅️')">⬅️</button>
-
-</div>
-
-<p class="result" id="battleResult"></p>
-
-</div>
-
-</div>
-
-
-<!-- TASKS -->
-
-<div id="tasks" class="section">
-
+<!-- RUNNER -->
+<div id="run" class="section">
 <div class="card">
-
-<button class="dark" onclick="show('home')">← Назад</button>
-
-<h2>🎁 ЗАДАНИЯ</h2>
-
-<p>
-Здесь будут задания, которые нужно выполнить,
-а не просто нажать кнопку.
-</p>
-
-<button class="main" onclick="startBattle()">
-💃 Выполнить танцевальное задание
-</button>
-
-<p class="result" id="taskResult"></p>
-
+<button class="dark back" onclick="stopGame()">← Выйти</button>
+<h2>🏃‍♀️ ДОБЕГИ ДО ПАРНЯ</h2>
+<p class="center" id="boyText">Софа → Лексо 💙</p>
+<div class="gamehud">
+<span>🏃 <span id="runDistance">0</span> м</span>
+<span>💎 <span id="runCoins">0</span></span>
+</div>
+<canvas id="runCanvas" width="800" height="430"></canvas>
+<div class="controls">
+<button class="empty"> </button>
+<button onclick="runJump()">⬆️</button>
+<button class="empty"> </button>
+<button onclick="runLeft()">⬅️</button>
+<button onclick="runSlide()">⬇️</button>
+<button onclick="runRight()">➡️</button>
+</div>
+<div class="result" id="runResult"></div>
+</div>
 </div>
 
+<!-- QUIZ -->
+<div id="quiz" class="section">
+<div class="card">
+<button class="dark back" onclick="show('home')">← Назад</button>
+<h2>🎵 ОТГАДАЙ ПЕСНЮ</h2>
+
+<div id="quizCategories">
+<p class="center">Выбери категорию:</p>
+<button class="gold" onclick="quizStart('ru')">🇷🇺 Русская музыка</button>
+<button class="gold" onclick="quizStart('ge')">🇬🇪 Грузинские песни</button>
+<button class="gold" onclick="quizStart('ost')">🎬 Саундтреки</button>
 </div>
 
+<div id="quizGame" style="display:none">
+<div class="timer">⏱️ <span id="quizTime">10</span></div>
+<div class="question" id="question"></div>
+<div class="answers" id="answers"></div>
+<div class="result" id="quizResult"></div>
+</div>
+</div>
+</div>
+
+<!-- CHALLENGE -->
+<div id="challenge" class="section">
+<div class="card">
+<button class="dark back" onclick="show('home')">← Назад</button>
+<h2>💄 GLAM CHALLENGE</h2>
+<p class="center" id="challengeText"></p>
+<div id="challengeOptions"></div>
+<div class="result" id="challengeResult"></div>
+</div>
+</div>
 
 <!-- SHOP -->
-
 <div id="shop" class="section">
-
 <div class="card">
-
-<button class="dark" onclick="show('home')">← Назад</button>
-
+<button class="dark back" onclick="show('home')">← Назад</button>
 <h2>🛍️ GLAM SHOP</h2>
-
-<h3>🍕 ЕДА</h3>
-
-<div class="shop-item">
-<span>🍕 Пицца — 100 💎</span>
-<button onclick="buy(100,'Пицца')">Купить</button>
+<div id="shopList"></div>
+<div class="result" id="shopResult"></div>
 </div>
-
-<div class="shop-item">
-<span>🧋 Бабл-ти — 150 💎</span>
-<button onclick="buy(150,'Бабл-ти')">Купить</button>
 </div>
-
-<div class="shop-item">
-<span>🍣 Суши — 250 💎</span>
-<button onclick="buy(250,'Суши')">Купить</button>
-</div>
-
-<h3>💃 GLAM</h3>
-
-<div class="shop-item">
-<span>🎤 Микрофон — 300 💎</span>
-<button onclick="buy(300,'Микрофон')">Купить</button>
-</div>
-
-<div class="shop-item">
-<span>🎧 Наушники — 400 💎</span>
-<button onclick="buy(400,'Наушники')">Купить</button>
-</div>
-
-<div class="shop-item">
-<span>🪩 Диско-шар — 700 💎</span>
-<button onclick="buy(700,'Диско-шар')">Купить</button>
-</div>
-
-<p class="result" id="shopResult"></p>
-
-</div>
-
-</div>
-
 
 <!-- STYLE -->
-
 <div id="style" class="section">
-
 <div class="card">
-
-<button class="dark" onclick="show('home')">← Назад</button>
-
+<button class="dark back" onclick="show('home')">← Назад</button>
 <h2>👗 МОЙ ОБРАЗ</h2>
-
-<p>Купленные предметы:</p>
-
-<div id="inventory">
-Пока ничего нет ✨
+<p class="center" id="stylePlayer"></p>
+<div id="inventory"></div>
 </div>
-
 </div>
-
-</div>
-
 
 <!-- RATING -->
-
 <div id="rating" class="section">
-
 <div class="card">
-
-<button class="dark" onclick="show('home')">← Назад</button>
-
+<button class="dark back" onclick="show('home')">← Назад</button>
 <h2>🏆 РЕЙТИНГ</h2>
-
 <div id="ratingList"></div>
-
+</div>
 </div>
 
 </div>
-
-</div>
-
 
 <script>
-
 const players={
-
-sofa:{
-name:"Софа",
-avatar:"👑",
-coins:0,
-items:[]
-},
-
-lika:{
-name:"Лика",
-avatar:"🎀",
-coins:0,
-items:[]
-},
-
-maiko:{
-name:"Маико",
-avatar:"🔥",
-coins:0,
-items:[]
-},
-
-ani:{
-name:"Ани",
-avatar:"🦋",
-coins:0,
-items:[]
-}
-
+sofa:{name:"Софа",avatar:"👑",boy:"Лексо",boyEmoji:"💙",coins:0,items:[]},
+lika:{name:"Лика",avatar:"🎀",boy:"Самвел",boyEmoji:"🖤",coins:0,items:[]},
+maiko:{name:"Маико",avatar:"🔥",boy:"Ника",boyEmoji:"💜",coins:0,items:[]},
+ani:{name:"Ани",avatar:"🦋",boy:"Габи",boyEmoji:"💚",coins:0,items:[]}
 };
 
 let current="sofa";
-
-let sequence=[];
-let position=0;
-let timerValue=10;
-let timerInterval=null;
-let battleActive=false;
-
-const arrows=["⬆️","➡️","⬇️","⬅️"];
-
+let gameTimer=null;
+let keys={};
+let danceState=null;
+let runState=null;
+let quizState=null;
 
 function load(){
-
-const saved=localStorage.getItem("girlsGlamPlayers");
-
-if(saved){
-
-const data=JSON.parse(saved);
-
-Object.keys(players).forEach(key=>{
-
-if(data[key]){
-players[key]=data[key];
-}
-
+try{
+const s=localStorage.getItem("ggc");
+if(s){
+const d=JSON.parse(s);
+Object.keys(players).forEach(k=>{
+if(d[k]) players[k]=d[k];
 });
-
 }
-
+}catch(e){}
 }
-
 
 function save(){
-
-localStorage.setItem(
-"girlsGlamPlayers",
-JSON.stringify(players)
-);
-
+localStorage.setItem("ggc",JSON.stringify(players));
 }
 
+function choose(id){
+current=id;
+update();
+show("home");
+}
 
 function update(){
-
 const p=players[current];
-
 document.getElementById("playerName").textContent=p.name;
-
 document.getElementById("avatar").textContent=p.avatar;
-
 document.getElementById("coins").textContent=p.coins;
 
-document.getElementById("sofaCoins").textContent=
-"💎 "+players.sofa.coins;
-
-document.getElementById("likaCoins").textContent=
-"💎 "+players.lika.coins;
-
-document.getElementById("maikoCoins").textContent=
-"💎 "+players.maiko.coins;
-
-document.getElementById("aniCoins").textContent=
-"💎 "+players.ani.coins;
-
+document.getElementById("c0").textContent="💎 "+players.sofa.coins;
+document.getElementById("c1").textContent="💎 "+players.lika.coins;
+document.getElementById("c2").textContent="💎 "+players.maiko.coins;
+document.getElementById("c3").textContent="💎 "+players.ani.coins;
 }
 
-
-function selectPlayer(id){
-
-current=id;
-
-update();
-
-show("home");
-
-}
-
-
-function startBattle(){
-
-show("battle");
-
-battleActive=false;
-
-clearInterval(timerInterval);
-
-sequence=[];
-
-position=0;
-
-timerValue=10;
-
-document.getElementById("timer").textContent=10;
-
-document.getElementById("battleResult").textContent="";
-
-const length=4;
-
-for(let i=0;i<length;i++){
-
-sequence.push(
-arrows[Math.floor(Math.random()*arrows.length)]
-);
-
-}
-
-renderCombo();
-
-setTimeout(()=>{
-
-battleActive=true;
-
-timerInterval=setInterval(()=>{
-
-timerValue--;
-
-document.getElementById("timer").textContent=timerValue;
-
-if(timerValue<=0){
-
-finishBattle(false);
-
-}
-
-},1000);
-
-},1800);
-
-}
-
-
-function renderCombo(){
-
-const box=document.getElementById("combo");
-
-box.innerHTML="";
-
-sequence.forEach((arrow,index)=>{
-
-const span=document.createElement("span");
-
-span.textContent=arrow;
-
-if(index<position){
-span.classList.add("done");
-}
-
-box.appendChild(span);
-
-});
-
-}
-
-
-function press(arrow){
-
-if(!battleActive)return;
-
-if(arrow===sequence[position]){
-
-position++;
-
-renderCombo();
-
-if(position===sequence.length){
-
-finishBattle(true);
-
-}
-
-}else{
-
-finishBattle(false);
-
-}
-
-}
-
-
-function finishBattle(success){
-
-if(!battleActive)return;
-
-battleActive=false;
-
-clearInterval(timerInterval);
-
-let reward=0;
-let message="";
-
-if(success){
-
-if(timerValue>=8){
-
-reward=150;
-message="✨ PERFECT! Идеально! +150 💎";
-
-}else if(timerValue>=5){
-
-reward=100;
-message="🔥 ОТЛИЧНО! +100 💎";
-
-}else{
-
-reward=60;
-message="💃 ХОРОШО! +60 💎";
-
-}
-
-}else{
-
-reward=0;
-message="😅 Комбинация не пройдена. Попробуй ещё раз!";
-
-}
-
-players[current].coins+=reward;
-
+function addCoins(n){
+players[current].coins+=n;
 save();
-
 update();
-
-document.getElementById("battleResult").textContent=message;
-
 }
-
-
-function leaveBattle(){
-
-clearInterval(timerInterval);
-
-battleActive=false;
-
-show("home");
-
-}
-
-
-function buy(price,item){
-
-if(players[current].coins<price){
-
-document.getElementById("shopResult").textContent=
-"💔 Недостаточно монет!";
-
-return;
-
-}
-
-players[current].coins-=price;
-
-players[current].items.push(item);
-
-save();
-
-update();
-
-document.getElementById("shopResult").textContent=
-"✨ Куплено: "+item+"!";
-
-}
-
-
-function updateInventory(){
-
-const items=players[current].items;
-
-document.getElementById("inventory").textContent=
-items.length
-?items.join(" • ")
-:"Пока ничего нет ✨";
-
-}
-
-
-function updateRating(){
-
-const list=Object.values(players)
-.sort((a,b)=>b.coins-a.coins);
-
-const medals=["🥇","🥈","🥉","4️⃣"];
-
-document.getElementById("ratingList").innerHTML=
-
-list.map((p,i)=>
-
-"<div class='player'>"+
-
-"<div class='player-avatar'>"+
-p.avatar+
-"</div>"+
-
-"<div class='player-info'>"+
-
-"<div class='player-name'>"+
-medals[i]+" "+p.name+
-"</div>"+
-
-"<div class='player-coins'>"+
-"💎 "+p.coins+
-"</div>"+
-
-"</div>"+
-
-"</div>"
-
-).join("");
-
-}
-
 
 function show(id){
-
-clearInterval(timerInterval);
-
-if(id!=="battle"){
-battleActive=false;
+clearInterval(gameTimer);
+document.querySelectorAll(".section").forEach(x=>x.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+if(id==="shop") renderShop();
+if(id==="style") renderStyle();
+if(id==="rating") renderRating();
 }
 
-document
-.querySelectorAll(".section")
-.forEach(x=>x.classList.remove("active"));
-
-document
-.getElementById(id)
-.classList.add("active");
-
-if(id==="style"){
-updateInventory();
+function stopGame(){
+clearInterval(gameTimer);
+danceState=null;
+runState=null;
+show("home");
 }
 
-if(id==="rating"){
-updateRating();
+/* DANCE BATTLE — 5 SECONDS */
+function startDance(){
+show("dance");
+const canvas=document.getElementById("danceCanvas");
+const ctx=canvas.getContext("2d");
+
+danceState={
+x:400,y:215,
+coins:0,
+obstacles:[],
+start:performance.now(),
+duration:5000,
+lastSpawn:0,
+finished:false
+};
+
+document.getElementById("danceResult").textContent="";
+requestAnimationFrame(danceLoop);
 }
 
+function movePlayer(dx,dy){
+if(!danceState||danceState.finished)return;
+danceState.x+=dx*45;
+danceState.y+=dy*45;
+danceState.x=Math.max(30,Math.min(770,danceState.x));
+danceState.y=Math.max(35,Math.min(395,danceState.y));
 }
 
+function danceLoop(now){
+if(!danceState)return;
 
-load();
+const elapsed=now-danceState.start;
+const left=Math.max(0,5000-elapsed);
+document.getElementById("danceTime").textContent=(left/1000).toFixed(1);
 
+if(elapsed>=5000){
+finishDance();
+return;
+}
+
+const canvas=document.getElementById("danceCanvas");
+const ctx=canvas.getContext("2d");
+
+ctx.fillStyle="#120b18";
+ctx.fillRect(0,0,800,430);
+
+ctx.fillStyle="#25142d";
+ctx.fillRect(0,0,800,430);
+
+ctx.strokeStyle="#71305f";
+for(let x=0;x<800;x+=50){
+ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,430);ctx.stroke();
+}
+for(let y=0;y<430;y+=50){
+ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(800,y);ctx.stroke();
+}
+
+if(now-danceState.lastSpawn>450){
+danceState.lastSpawn=now;
+danceState.obstacles.push({
+x:Math.random()*740+30,
+y:Math.random()*370+30,
+r:18
+});
+}
+
+if(Math.random()<.025){
+danceState.coinsList=danceState.coinsList||[];
+danceState.coinsList.push({
+x:Math.random()*740+30,
+y:Math.random()*370+30
+});
+}
+
+danceState.obstacles.forEach(o=>{
+ctx.fillStyle="#ff4c5f";
+ctx.beginPath();
+ctx.arc(o.x,o.y,o.r,0,Math.PI*2);
+ctx.fill();
+
+if(Math.hypot(o.x-danceState.x,o.y-danceState.y)<30){
+danceState.obstacles=[];
+}
+});
+
+if(danceState.coinsList){
+danceState.coinsList=danceState.coinsList.filter(c=>{
+ctx.fillStyle="#f7d978";
+ctx.beginPath();
+ctx.arc(c.x,c.y,10,0,Math.PI*2);
+ctx.fill();
+
+if(Math.hypot(c.x-danceState.x,c.y-danceState.y)<25){
+danceState.coins++;
+return false;
+}
+return true;
+});
+}
+
+ctx.font="38px Arial";
+ctx.textAlign="center";
+ctx.fillText(players[current].avatar,danceState.x,danceState.y+13);
+
+document.getElementById("danceCoins").textContent=danceState.coins;
+
+requestAnimationFrame(danceLoop);
+}
+
+function finishDance(){
+if(!danceState||danceState.finished)return;
+danceState.finished=true;
+
+const reward=danceState.coins*10;
+
+addCoins(reward);
+
+document.getElementById("danceResult").textContent=
+"🪩 Батл закончен! Собрано 💎 "+danceState.coins+
+" → награда 💎 "+reward;
+}
+
+/* RUNNER */
+function startRun(){
+show("run");
+
+const p=players[current];
+document.getElementById("boyText").textContent=
+p.name+" → "+p.boy+" "+p.boyEmoji;
+
+runState={
+x:150,y:340,
+vy:0,
+jump:false,
+slide:false,
+distance:0,
+coins:0,
+obstacles:[],
+start:performance.now(),
+last:performance.now(),
+finished:false,
+goal:900
+};
+
+document.getElementById("runResult").textContent="";
+requestAnimationFrame(runLoop);
+}
+
+function runLeft(){
+if(runState)runState.x=Math.max(80,runState.x-55);
+}
+function runRight(){
+if(runState)runState.x=Math.min(300,runState.x+55);
+}
+function runJump(){
+if(runState&&!runState.jump){
+runState.vy=-11;
+runState.jump=true;
+}
+}
+function runSlide(){
+if(runState)runState.slide=true;
+setTimeout(()=>{if(runState)runState.slide=false},450);
+}
+
+function runLoop(now){
+if(!runState)return;
+
+const dt=Math.min(40,now-runState.last);
+runState.last=now;
+
+if(now-runState.start>30000){
+finishRun(false);
+return;
+}
+
+runState.distance+=dt*.08;
+
+if(Math.random()<.025){
+runState.obstacles.push({
+x:820,
+y:340,
+w:35,
+h:50
+});
+}
+
+if(Math.random()<.02){
+runState.coinsList=runState.coinsList||[];
+runState.coinsList.push({x:820,y:260+Math.random()*90});
+}
+
+runState.vy+=.5;
+runState.y+=runState.vy;
+
+if(runState.y>=340){
+runState.y=340;
+runState.vy=0;
+runState.jump=false;
+}
+
+runState.obstacles.forEach(o=>o.x-=dt*.45);
+runState.obstacles=runState.obstacles.filter(o=>o.x>-80);
+
+if(runState.coinsList){
+runState.coinsList.forEach(c=>c.x-=dt*.45);
+runState.coinsList=runState.coinsList.filter(c=>c.x>-30);
+}
+
+const canvas=document.getElementById("runCanvas");
+const ctx=canvas.getContext("2d");
+
+ctx.fillStyle="#100d20";
+ctx.fillRect(0,0,800,430);
+
+ctx.fillStyle="#261b38";
+ctx.fillRect(0,300,800,130);
+
+ctx.fillStyle="#3c2a51";
+ctx.fillRect(0,370,800,60);
+
+for(let x=0;x<800;x+=80){
+ctx.fillStyle="#f7d978";
+ctx.fillRect((x-(now*.2)%80),365,40,5);
+}
+
+runState.obstacles.forEach(o=>{
+ctx.fillStyle="#ff5271";
+ctx.fillRect(o.x,o.y,o.w,o.h);
+
+if(
+Math.abs(o.x-runState.x)<45 &&
+Math.abs(o.y-runState.y)<45 &&
+!runState.jump &&
+!runState.slide
+){
+runState.distance=Math.max(0,runState.distance-25);
+o.x=-100;
+}
+});
+
+if(runState.coinsList){
+runState.coinsList.forEach(c=>{
+ctx.fillStyle="#f7d978";
+ctx.beginPath();
+ctx.arc(c.x,c.y,11,0,Math.PI*2);
+ctx.fill();
+
+if(Math.hypot(c.x-runState.x,c.y-runState.y)<35){
+runState.coins++;
+c.x=-100;
+}
+});
+}
+
+ctx.font="42px Arial";
+ctx.textAlign="center";
+ctx.fillText(players[current].avatar,runState.x,runState.y+5);
+
+if(runState.distance>=runState.goal){
+finishRun(true);
+return;
+}
+
+document.getElementById("runDistance").textContent=
+Math.floor(runState.distance);
+
+document.getElementById("runCoins").textContent=
+runState.coins;
+
+requestAnimationFrame(runLoop);
+}
+
+function finishRun(win){
+if(!runState||runState.finished)return;
+runState.finished=true;
+
+const reward=runState.coins*12+(win?250:0);
+addCoins(reward);
+
+document.getElementById("runResult").textContent=
+win
+?"💖 "+players[current].boy+" дождался! +"+reward+" 💎"
+:"😅 Не успела добежать. Собрано +"+reward+" 💎";
+}
+
+/* QUIZ */
+const quizData={
+ru:[
+["Кто исполняет песню «Комета»?","Люся Чеботина","Дима Билан","Zivert","Мот",0],
+["Какая группа исполняет «Районы-кварталы»?","Звери","Руки Вверх!","Би-2","Градусы",0],
+["Кто поёт «Знаешь ли ты»?","МакSим","Ёлка","Полина Гагарина","Вера Брежнева",0]
+],
+ge:[
+["Какая страна известна многоголосным грузинским пением?","Грузия","Италия","Испания","Франция",0],
+["Как называется известный грузинский танец?","Картули","Самба","Танго","Фламенко",0],
+["Какой инструмент часто используется в грузинской музыке?","Пандури","Скрипка","Арфа","Саксофон",0]
+],
+ost:[
+["Из какого фильма песня «Let It Go»?","Холодное сердце","Барби","Аватар","Шрек",0],
+["Как называется музыка из фильма или сериала?","Саундтрек","Ремикс","Сингл","Кавер",0],
+["В каком фильме есть песня «Hakuna Matata»?","Король Лев","Гарри Поттер","Матильда","Аладдин",0]
+]
+};
+
+function openQuiz(){
+show("quiz");
+document.getElementById("quizCategories").style.display="block";
+document.getElementById("quizGame").style.display="none";
+}
+
+function quizStart(cat){
+const arr=quizData[cat];
+quizState={arr,index:Math.floor(Math.random()*arr.length),time:10,answered:false};
+
+document.getElementById("quizCategories").style.display="none";
+document.getElementById("quizGame").style.display="block";
+
+renderQuestion();
+
+clearInterval(gameTimer);
+gameTimer=setInterval(()=>{
+quizState.time--;
+document.getElementById("quizTime").textContent=quizState.time;
+if(quizState.time<=0)quizAnswer(-1);
+},1000);
+}
+
+function renderQuestion(){
+const q=quizState.arr[quizState.index];
+document.getElementById("question").textContent="🎵 "+q[0];
+document.getElementById("quizTime").textContent=quizState.time;
+document.getElementById("quizResult").textContent="";
+
+const box=document.getElementById("answers");
+box.innerHTML="";
+
+for(let i=0;i<4;i++){
+const b=document.createElement("button");
+b.className="dark";
+b.textContent=q[i+1];
+b.onclick=()=>quizAnswer(i);
+box.appendChild(b);
+}
+}
+
+function quizAnswer(index){
+if(!quizState||quizState.answered)return;
+quizState.answered=true;
+clearInterval(gameTimer);
+
+const q=quizState.arr[quizState.index];
+
+if(index===q[5]){
+addCoins(100);
+document.getElementById("quizResult").textContent=
+"✨ Правильно! +100 💎";
+}else{
+document.getElementById("quizResult").textContent=
+"❌ Неверно. Правильный ответ: "+q[q[5]+1];
+}
+
+setTimeout(()=>{
+quizState.answered=false;
+quizState.index=Math.floor(Math.random()*quizState.arr.length);
+quizState.time=10;
+renderQuestion();
+gameTimer=setInterval(()=>{
+quizState.time--;
+document.getElementById("quizTime").textContent=quizState.time;
+if(quizState.time<=0)quizAnswer(-1);
+},1000);
+},1300);
+}
+
+/* GLAM CHALLENGE */
+const challenges=[
+["💖 Выбери образ для свидания",["👗 Розовое платье","🖤 Чёрный костюм","👕 Спортивный образ","🧥 Зимняя куртка"]],
+["🪩 Выбери образ для вечеринки",["✨ Блестящее платье","👖 Джинсы","🧢 Кепка","🧥 Пальто"]],
+["🌴 Выбери образ для пляжа",["👙 Пляжный образ","🧥 Пальто","🎓 Школьная форма","🧣 Шарф"]]
+];
+
+function openChallenge(){
+show("challenge");
+const c=challenges[Math.floor(Math.random()*challenges.length)];
+
+document.getElementById("challengeText").textContent=c[0];
+
+const box=document.getElementById("challengeOptions");
+box.innerHTML="";
+
+c[1].forEach((x,i)=>{
+const b=document.createElement("button");
+b.className="dark";
+b.textContent=x;
+b.onclick=()=>{
+addCoins(i===0?120:40);
+document.getElementById("challengeResult").textContent=
+i===0?"✨ Идеальный Glam-образ! +120 💎":"💎 Хороший выбор! +40 💎";
+};
+box.appendChild(b);
+});
+}
+
+/* SHOP */
+const shop=[
+["💎","Алмазные серьги",120],
+["👑","Золотая корона",250],
+["💄","VIP косметика",180],
+["👗","Гламурное платье",350],
+["👠","Золотые туфли",300],
+["🪩","Диско-аксессуар",200],
+["🎀","Розовый бант",100]
+];
+
+function renderShop(){
+const box=document.getElementById("shopList");
+box.innerHTML="";
+
+shop.forEach(x=>{
+const d=document.createElement("div");
+d.className="item";
+d.innerHTML=
+"<span>"+x[0]+" "+x[1]+"<br><small>"+x[2]+" 💎</small></span>";
+
+const b=document.createElement("button");
+b.className="gold";
+b.textContent="Купить";
+b.onclick=()=>buyItem(x);
+
+d.appendChild(b);
+box.appendChild(d);
+});
+}
+
+function buyItem(x){
+if(players[current].coins<x[2]){
+document.getElementById("shopResult").textContent="💔 Не хватает монет!";
+return;
+}
+
+players[current].coins-=x[2];
+players[current].items.push(x[0]+" "+x[1]);
+save();
 update();
 
-</script>
+document.getElementById("shopResult").textContent=
+"✨ Куплено: "+x[1];
+}
 
+function renderStyle(){
+const p=players[current];
+document.getElementById("stylePlayer").textContent=
+p.avatar+" "+p.name;
+
+const box=document.getElementById("inventory");
+
+if(!p.items.length){
+box.innerHTML="<p class='center'>Пока гардероб пуст ✨</p>";
+return;
+}
+
+box.innerHTML=p.items.map(x=>
+"<span class='badge'>"+x+"</span>"
+).join("");
+}
+
+/* RATING */
+function renderRating(){
+const arr=Object.values(players).sort((a,b)=>b.coins-a.coins);
+const medals=["🥇","🥈","🥉","🏅"];
+
+document.getElementById("ratingList").innerHTML=
+arr.map((p,i)=>
+"<div class='player'>"+
+"<div class='pavatar'>"+p.avatar+"</div>"+
+"<div class='pinfo'>"+
+"<div class='pname'>"+medals[i]+" "+p.name+"</div>"+
+"<div class='pcoins'>💎 "+p.coins+"</div>"+
+"</div></div>"
+).join("");
+}
+
+/* KEYBOARD */
+document.addEventListener("keydown",e=>{
+if(e.key==="ArrowLeft")movePlayer(-1,0);
+if(e.key==="ArrowRight")movePlayer(1,0);
+if(e.key==="ArrowUp"){
+if(runState)runJump();
+else movePlayer(0,-1);
+}
+if(e.key==="ArrowDown"){
+if(runState)runSlide();
+else movePlayer(0,1);
+}
+});
+
+load();
+update();
+</script>
 </body>
 </html>
